@@ -5,36 +5,25 @@ body {
   padding: 0;
   background: #1e1e2f;
   color: #ffffff;
-}
-
-h1, h2, h3 {
-  color: #ffffff;
-}
-
-a {
-  text-decoration: none;
-  color: #3498db;
-}
-
-a:hover {
-  color: #2980b9;
+  padding-top: 80px; /* Adjust padding for larger navigation bar */
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 20px; /* Add padding to the container */
 }
 
 /* Navigation */
 nav {
   background: #2c3e50;
   color: #fff;
-  padding: 10px 0;
+  padding: 15px 0; /* Increase padding */
   position: fixed;
   width: 100%;
   top: 0;
   z-index: 1000;
+  height: 70px; /* Increase height */
 }
 
 nav .container {
@@ -46,12 +35,15 @@ nav .container {
 nav ul {
   list-style: none;
   display: flex;
-  gap: 20px;
+  gap: 20px; /* Increase gap between links */
+  margin: 0;
+  padding: 0;
 }
 
 nav ul li a {
   color: #fff;
-  font-size: 1.1rem;
+  font-size: 1.1rem; /* Increase font size */
+  padding: 10px 15px; /* Add padding for better click area */
 }
 
 nav ul li a:hover {
@@ -63,6 +55,7 @@ nav ul li a:hover {
   background: #34495e;
   color: #fff;
   padding: 100px 0;
+  padding-top: 40px; /* Add extra padding to the hero section */
 }
 
 .hero-content {
@@ -404,6 +397,14 @@ nav ul li a:hover {
   color: #ffffff;
 }
 
+.contact-info a {
+  color: #3498db; /* Use the same color for all links */
+}
+
+.contact-info a:hover {
+  color: #2980b9; /* Darker blue on hover */
+}
+
 .contact-form {
   flex: 1;
   display: flex;
@@ -496,29 +497,56 @@ footer p {
 }
 
 @media (max-width: 768px) {
+  /* Adjust body padding for smaller screens */
+  body {
+    padding-top: 70px; /* Match the height of the navigation bar */
+  }
+
+  /* Navigation */
   nav ul {
+    gap: 10px; /* Reduce gap on mobile */
+  }
+
+  nav ul li a {
+    font-size: 1rem; /* Slightly smaller font size for mobile */
+  }
+
+  /* Hero Section */
+  .hero {
+    padding-top: 20px; /* Adjust padding for mobile */
+  }
+
+  .hero-content {
     flex-direction: column;
-    gap: 10px;
+    text-align: center;
   }
 
-  .hero-text h1 {
-    font-size: 2.5rem;
+  .hero-image img {
+    width: 250px;
+    height: 250px;
   }
 
-  .hero-text h2 {
-    font-size: 1.8rem;
+  /* Sections */
+  .services-grid, .skills-grid, .projects-grid, .experience-grid, .education-grid {
+    grid-template-columns: 1fr; /* Single column for mobile */
   }
 
-  .hero-text p {
+  /* Font Sizes */
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  p {
     font-size: 1rem;
   }
 
-  .services-grid, .skills-grid, .projects-grid, .experience-grid, .education-grid {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  }
-
-  .service-card, .skill-card, .project-card, .experience-card, .education-card {
-    padding: 15px;
+  /* Contact Section */
+  .contact-content {
+    flex-direction: column;
   }
 }
 
