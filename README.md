@@ -22,10 +22,10 @@ Python Libraries:
 Pandas, NumPy, Matplotlib, Flask, Django
 
 Databases:
-MySQL, Neo4j, MilvusDB
+MySQL, Neo4j, PostgreSQL, Piecone
 
 Technical Tools:
-Git, GitHub, HackerRank, LeetCode
+Git, GitHub,
 
 Machine Learning & AI Tools:
 LLM Expert, LangChain, PyTorch, TensorFlow, Keras, OpenCV, Scikit-learn

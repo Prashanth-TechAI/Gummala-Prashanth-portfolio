@@ -4,26 +4,26 @@ body {
   margin: 0;
   padding: 0;
   background: #1e1e2f;
-  color: #ffffff;
-  padding-top: 80px; /* Adjust padding for larger navigation bar */
+  color: #fff;
+  padding-top: 80px;
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 20px; /* Add padding to the container */
+  padding: 20px;
 }
 
 /* Navigation */
 nav {
   background: #2c3e50;
   color: #fff;
-  padding: 15px 0; /* Increase padding */
+  padding: 15px 0;
   position: fixed;
   width: 100%;
   top: 0;
   z-index: 1000;
-  height: 70px; /* Increase height */
+  height: 70px;
 }
 
 nav .container {
@@ -35,19 +35,34 @@ nav .container {
 nav ul {
   list-style: none;
   display: flex;
-  gap: 20px; /* Increase gap between links */
+  gap: 20px;
   margin: 0;
   padding: 0;
 }
 
 nav ul li a {
   color: #fff;
-  font-size: 1.1rem; /* Increase font size */
-  padding: 10px 15px; /* Add padding for better click area */
+  font-size: 1.1rem;
+  padding: 10px 15px;
+  text-decoration: none;
 }
 
 nav ul li a:hover {
   color: #3498db;
+}
+
+/* Continuous Logo Animation */
+nav h1 img {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+  animation: pulseLogo 3s ease-in-out infinite;
+}
+
+@keyframes pulseLogo {
+  0%, 100% { transform: scale(1); filter: brightness(1); }
+  50% { transform: scale(1.05); filter: brightness(1.1); }
 }
 
 /* Hero Section */
@@ -55,7 +70,7 @@ nav ul li a:hover {
   background: #34495e;
   color: #fff;
   padding: 100px 0;
-  padding-top: 40px; /* Add extra padding to the hero section */
+  padding-top: 40px;
 }
 
 .hero-content {
@@ -80,13 +95,11 @@ nav ul li a:hover {
 .hero-text h2 {
   font-size: 2rem;
   margin-bottom: 20px;
-  color: #ffffff;
 }
 
 .hero-text p {
   font-size: 1.2rem;
   margin-bottom: 30px;
-  color: #ffffff;
 }
 
 .social-links {
@@ -97,10 +110,21 @@ nav ul li a:hover {
 .social-links a {
   color: #fff;
   font-size: 1.5rem;
+  /* Position relative to enable animation */
+  position: relative;
 }
 
 .social-links a:hover {
   color: #3498db;
+  animation: shakeIcon 0.5s ease;
+}
+
+@keyframes shakeIcon {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(10deg); }
+  50% { transform: rotate(0deg); }
+  75% { transform: rotate(-10deg); }
+  100% { transform: rotate(0deg); }
 }
 
 .btn {
@@ -111,10 +135,33 @@ nav ul li a:hover {
   border-radius: 5px;
   margin-top: 20px;
   transition: background 0.3s ease;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
 }
 
 .btn:hover {
   background: #2980b9;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.5), transparent);
+  transform: skewX(-25deg);
+}
+
+.btn:hover::before {
+  animation: shine 1s forwards;
+}
+
+@keyframes shine {
+  from { left: -100%; }
+  to { left: 100%; }
 }
 
 .hero-image {
@@ -122,7 +169,6 @@ nav ul li a:hover {
   text-align: center;
 }
 
-/* Floating Animation for Photo */
 @keyframes float {
   0% { transform: translateY(0); }
   50% { transform: translateY(-10px); }
@@ -135,7 +181,7 @@ nav ul li a:hover {
   border-radius: 50%;
   object-fit: cover;
   object-position: top;
-  animation: float 4s ease-in-out infinite; /* Slow floating animation */
+  animation: float 4s ease-in-out infinite;
 }
 
 /* About Section */
@@ -156,7 +202,6 @@ nav ul li a:hover {
   max-width: 800px;
   margin: 0 auto;
   text-align: center;
-  color: #ffffff;
 }
 
 /* Services Section */
@@ -181,7 +226,7 @@ nav ul li a:hover {
   background: #2c3e50;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   text-align: center;
   transition: transform 0.3s ease;
 }
@@ -195,12 +240,12 @@ nav ul li a:hover {
 .service-card h3 {
   font-size: 1.5rem;
   margin-bottom: 10px;
-  color: #ffffff;
+  color: #fff;
 }
 
 .service-card p {
   font-size: 1rem;
-  color: #cccccc;
+  color: #ccc;
 }
 
 /* Skills Section */
@@ -225,7 +270,7 @@ nav ul li a:hover {
   background: #34495e;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   text-align: center;
   transition: transform 0.3s ease;
 }
@@ -239,12 +284,12 @@ nav ul li a:hover {
 .skill-card h3 {
   font-size: 1.5rem;
   margin-bottom: 10px;
-  color: #ffffff;
+  color: #fff;
 }
 
 .skill-card p {
   font-size: 1rem;
-  color: #cccccc;
+  color: #ccc;
 }
 
 /* Projects Section */
@@ -269,7 +314,7 @@ nav ul li a:hover {
   background: #2c3e50;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   transition: transform 0.3s ease;
 }
 
@@ -281,8 +326,35 @@ nav ul li a:hover {
 
 .project-card p {
   font-size: 1rem;
-  color: #cccccc;
+  color: #ccc;
 }
+
+/* Apply Shine Animation to All .btn Elements (View, Download, etc.) */
+.btn,
+.contact-form button {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before,
+.contact-form button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.5), transparent);
+  transform: skewX(-25deg);
+}
+
+.btn:hover::before,
+.contact-form button:hover::before {
+  animation: shine 1s forwards;
+}
+
+/* Classic "View" Button Specific (if needed) */
+/* (The above rules already cover .btn elements used for project view, resume download, etc.) */
 
 /* Experience Section */
 .experience {
@@ -306,7 +378,7 @@ nav ul li a:hover {
   background: #34495e;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   transition: transform 0.3s ease;
 }
 
@@ -318,13 +390,13 @@ nav ul li a:hover {
 
 .experience-card h4 {
   font-size: 1.2rem;
-  color: #cccccc;
+  color: #ccc;
   margin-bottom: 10px;
 }
 
 .experience-card p {
   font-size: 1rem;
-  color: #cccccc;
+  color: #ccc;
 }
 
 /* Education Section */
@@ -349,7 +421,7 @@ nav ul li a:hover {
   background: #2c3e50;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   transition: transform 0.3s ease;
 }
 
@@ -361,13 +433,13 @@ nav ul li a:hover {
 
 .education-card h4 {
   font-size: 1.2rem;
-  color: #cccccc;
+  color: #ccc;
   margin-bottom: 10px;
 }
 
 .education-card p {
   font-size: 1rem;
-  color: #cccccc;
+  color: #ccc;
 }
 
 /* Contact Section */
@@ -394,15 +466,16 @@ nav ul li a:hover {
 .contact-info p {
   font-size: 1.2rem;
   line-height: 1.6;
-  color: #ffffff;
+  color: #fff;
 }
 
 .contact-info a {
-  color: #3498db; /* Use the same color for all links */
+  color: #3498db;
+  text-decoration: none;
 }
 
 .contact-info a:hover {
-  color: #2980b9; /* Darker blue on hover */
+  color: #2980b9;
 }
 
 .contact-form {
@@ -412,13 +485,14 @@ nav ul li a:hover {
   gap: 20px;
 }
 
-.contact-form input, .contact-form textarea {
+.contact-form input,
+.contact-form textarea {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 1rem;
   background: #34495e;
-  color: #ffffff;
+  color: #fff;
 }
 
 .contact-form button {
@@ -429,10 +503,27 @@ nav ul li a:hover {
   border-radius: 5px;
   cursor: pointer;
   transition: background 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
 .contact-form button:hover {
   background: #2980b9;
+}
+
+.contact-form button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.5), transparent);
+  transform: skewX(-25deg);
+}
+
+.contact-form button:hover::before {
+  animation: shine 1s forwards;
 }
 
 /* Footer */
@@ -454,29 +545,84 @@ footer p {
   100% { transform: translateY(0); }
 }
 
-/* Apply Floating Animation to Sections */
-.service-card, .skill-card, .project-card, .experience-card, .education-card {
-  animation: float-section 4s ease-in-out infinite; /* Floating animation */
+.service-card,
+.skill-card,
+.project-card,
+.experience-card,
+.education-card {
+  animation: float-section 4s ease-in-out infinite;
 }
 
-/* Sparkle Animation */
 @keyframes sparkle {
   0% { opacity: 1; }
   50% { opacity: 0.5; transform: scale(1.1); }
   100% { opacity: 1; }
 }
 
-/* Blink Animation */
 @keyframes blink {
   0% { opacity: 1; }
   50% { opacity: 0.3; }
   100% { opacity: 1; }
 }
 
-/* Apply Animations on Hover */
-.service-card:hover, .skill-card:hover, .project-card:hover, .experience-card:hover, .education-card:hover {
+.service-card:hover,
+.skill-card:hover,
+.project-card:hover,
+.experience-card:hover,
+.education-card:hover {
   animation: float-section 4s ease-in-out infinite, sparkle 1s ease-in-out, blink 1.5s ease-in-out;
-  box-shadow: 0 0 20px rgba(52, 152, 219, 0.8); /* Add a glowing effect */
+  box-shadow: 0 0 20px rgba(52,152,219,0.8);
+}
+
+/* Unique WhatsApp Button Animation */
+#whatsapp-icon {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #3498db;
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 2000;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  text-decoration: none;
+}
+
+#whatsapp-icon:hover {
+  transform: scale(1.1);
+}
+
+/* Ripple effect on hover */
+#whatsapp-icon::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.8);
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
+#whatsapp-icon:hover::after {
+  animation: ripple 1s ease-out;
+}
+
+@keyframes ripple {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(2); opacity: 0; }
+}
+
+#whatsapp-icon i {
+  font-size: 16px;
 }
 
 /* Responsive Styles */
@@ -485,66 +631,52 @@ footer p {
     flex-direction: column;
     text-align: center;
   }
-
   .hero-image img {
     width: 300px;
     height: 300px;
   }
-
   .contact-content {
     flex-direction: column;
   }
 }
 
 @media (max-width: 768px) {
-  /* Adjust body padding for smaller screens */
   body {
-    padding-top: 70px; /* Match the height of the navigation bar */
+    padding-top: 70px;
   }
-
-  /* Navigation */
   nav ul {
-    gap: 10px; /* Reduce gap on mobile */
+    gap: 10px;
   }
-
   nav ul li a {
-    font-size: 1rem; /* Slightly smaller font size for mobile */
+    font-size: 1rem;
   }
-
-  /* Hero Section */
   .hero {
-    padding-top: 20px; /* Adjust padding for mobile */
+    padding-top: 20px;
   }
-
   .hero-content {
     flex-direction: column;
     text-align: center;
   }
-
   .hero-image img {
     width: 250px;
     height: 250px;
   }
-
-  /* Sections */
-  .services-grid, .skills-grid, .projects-grid, .experience-grid, .education-grid {
-    grid-template-columns: 1fr; /* Single column for mobile */
+  .services-grid,
+  .skills-grid,
+  .projects-grid,
+  .experience-grid,
+  .education-grid {
+    grid-template-columns: 1fr;
   }
-
-  /* Font Sizes */
   h1 {
     font-size: 2rem;
   }
-
   h2 {
     font-size: 1.5rem;
   }
-
   p {
     font-size: 1rem;
   }
-
-  /* Contact Section */
   .contact-content {
     flex-direction: column;
   }
@@ -554,20 +686,24 @@ footer p {
   .hero-text h1 {
     font-size: 2rem;
   }
-
   .hero-text h2 {
     font-size: 1.5rem;
   }
-
   .hero-text p {
     font-size: 0.9rem;
   }
-
-  .services-grid, .skills-grid, .projects-grid, .experience-grid, .education-grid {
+  .services-grid,
+  .skills-grid,
+  .projects-grid,
+  .experience-grid,
+  .education-grid {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   }
-
-  .service-card, .skill-card, .project-card, .experience-card, .education-card {
+  .service-card,
+  .skill-card,
+  .project-card,
+  .experience-card,
+  .education-card {
     padding: 10px;
   }
 }
