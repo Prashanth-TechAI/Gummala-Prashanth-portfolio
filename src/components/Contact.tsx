@@ -53,7 +53,7 @@ const Contact = () => {
         {
       icon: Smile,
       label: 'Huggingface',
-      value: 'Prashanth-970',
+      value: 'prashanth-970',
       href: 'https://huggingface.co/prashanth970',
       color: 'text-yellow-500',
     },

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Mail, Phone, Linkedin, Download, Github } from 'lucide-react';
+import { Mail, Phone, Linkedin, Download, Github, Smile, Instagram } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import profilePhoto from '@/assets/profile-photo.jpg';
 import resumeFile from '@/assets/resume.pdf'; // ✅ Import resume
@@ -19,6 +19,12 @@ const Hero = () => {
       color: 'hover:text-green-500',
     },
     {
+      icon: Instagram,
+      href: 'https://www.instagram.com/prashanth__000_?igsh=MWY3bjhwODUzY2tqaQ==',
+      label: 'Instagram',
+      color: 'hover:text-pink-500',
+    },
+    {
       icon: Linkedin,
       href: 'https://linkedin.com/in/gummala-prashanth-1a34a3273',
       label: 'LinkedIn',
@@ -29,6 +35,12 @@ const Hero = () => {
       href: 'https://github.com/Prashanth-TechAI',
       label: 'GitHub',
       color: 'hover:text-purple-500',
+    },
+    {
+      icon: Smile,
+      href: 'https://huggingface.co/prashanth970',
+      label: 'Huggingface',
+      color: 'hover:text-yellow-500',
     },
   ];
 
