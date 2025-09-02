@@ -1,138 +1,117 @@
-1. Personal Information
-Name: Gummala Prashanth
+#  Gummala Prashanth – AI Developer Portfolio  
 
-Role: AI/ML Engineer | Generative AI | LLM Expert
+Welcome to my portfolio!  
+I’m **Gummala Prashanth**, an **AI Developer | Generative AI Enthusiast | LLM Expert**.  
+I specialize in building **Generative AI solutions, intelligent agents, and scalable ML systems** that solve real-world problems.  
 
-Email: gummalaprashanth509@gmail.com
+---
 
-Phone: 09701337681
+##  About Me  
 
-LinkedIn: Gummala Prashanth
+I’m a results-driven AI developer with expertise in:  
+- **Generative AI, LLMs, Machine Learning, Deep Learning, NLP**  
+- **Computer Vision, Agentic RAG, Advanced AI Models**  
+- Skilled in **Python** with libraries like PyTorch, TensorFlow, OpenCV, LangChain.  
+- Experienced in building **AI Agents** and deploying them to production environments.  
 
-GitHub: Prashanth-TechAI
+👉 I also founded **[WEDNES AI](https://wednes-ai.vercel.app/)** —  
+a **no-code platform** to build and deploy AI agents (RAG chatbots, SQL agents, Image Gen, Smart Agents) with just a few clicks.  
 
-2. Professional Summary
-You are a passionate AI/ML Engineer with expertise in Generative AI, Machine Learning (ML), and Deep Learning (DL). You specialize in building innovative solutions using advanced AI techniques and have hands-on experience with programming languages, databases, and AI/ML tools. Your work focuses on solving complex problems and exploring new technologies to contribute to cutting-edge projects.
+[🔗 See WEDNES AI Demo](https://wednes-ai.vercel.app/)  
 
-3. Skills & Expertise
-Programming Languages:
-C, C++, Python, Java
+---
 
-Python Libraries:
-Pandas, NumPy, Matplotlib, Flask, Django
+## 🛠️ Skills & Expertise  
 
-Databases:
-MySQL, Neo4j, PostgreSQL, Piecone
+### 🔹 Programming  
+- Python (Pandas, NumPy, Matplotlib, Scikit-learn, PyTorch, TensorFlow, Keras …)  
 
-Technical Tools:
-Git, GitHub,
+### 🔹 Cloud & Services  
+- AWS, Azure, GCP, Groq Cloud, NVIDIA NIM  
 
-Machine Learning & AI Tools:
-LLM Expert, LangChain, PyTorch, TensorFlow, Keras, OpenCV, Scikit-learn
+### 🔹 Databases  
+- MySQL, PostgreSQL, MongoDB, Pinecone, Qdrant, Redis, Neo4j  
 
-Development Environments:
-Google Colab, Visual Studio Code, Jupyter Notebook
+### 🔹 AI & Advanced Techniques  
+- Generative AI, Transformers, LLMs, RAG, Agentic RAG, OCR, STT/TTS, VLMs  
 
-Web Technologies:
-HTML, CSS, JavaScript (Basics)
+### 🔹 Frameworks & Tools  
+- Flask, Django, FastAPI, LangChain, LlamaIndex, LangGraph, LangSmith  
+- Docker, Celery, Jinja, Huggingface Hub, Grafana  
 
-UI/UX Frameworks:
-Fluxlora, ConfyUI (For Fine-Tuning and Custom UI Development)
+### 🔹 Agents & UI  
+- CrewAI, Smola Agents, OpenAI Agent SDK  
+- Streamlit, Gradio  
 
-Soft Skills:
-Problem Solving, Teamwork, Communication
+### 🔹 Other  
+- Git/GitHub/GitLab  
+- API Doc & Testing: Swagger, Postman, Thunderclient  
+- Soft Skills: Problem Solving, Teamwork, Communication  
 
-4. Services
-Artificial Intelligence:
-Building intelligent systems using Generative AI, LLMs, and advanced AI techniques.
+---
 
-Machine Learning:
-Developing and deploying machine learning models for real-world applications.
+## 📌 Notable Projects  
 
-Data Science:
-Analyzing and interpreting complex data to drive decision-making and insights.
+### 🔹 [WEDNES AI](https://github.com/Prashanth-TechAI/WEDNES-AI-Backend.git)  
+> A no-code platform to build, preview, and deploy custom AI agents (RAG, SQL, Image Gen).  
 
-5. Notable Projects
-AI Safe Drive:
-Developed a system using deep CNNs to classify facial emotions.
+### 🔹 [AI Safe Drive](https://github.com/Prashanth-TechAI/AI-Safe-Drive)  
+Driver monitoring system using CNNs for facial emotion detection, music recommendation, and drowsiness alerts.  
 
-Integrated features to play music based on emotion and trigger an alarm if the driver falls asleep.
+### 🔹 [AI Chatbot with Groq API](https://github.com/Prashanth-TechAI/-AI-Chatbot-with-Groq-API)  
+Real-time AI-powered chatbot built with Flask + Groq API.  
 
-AI Chatbot with Groq API:
-Built an AI-powered chatbot using Flask and the Groq API.
+### 🔹 [Intrusion Detection System](https://github.com/Prashanth-TechAI/INTRUSION-DETECTION-SYSTEM)  
+Anomaly detection in network traffic using Random Forest (76% accuracy).  
 
-Features include real-time responses and conversation history.
+### 🔹 [Face Recognition System](https://github.com/Prashanth-TechAI/Face-Recogntion-System)  
+Real-time secure face recognition with OpenCV + Dlib + SQLite.  
 
-Intrusion Detection System:
-Developed an IDS to classify network traffic and predict anomalies using a Random Forest model with 76% accuracy.
+### 🔹 [Deepfake Detection System](https://github.com/Prashanth-TechAI/Deepfake-Detection-System)  
+AI API for detecting manipulated audio & video.  
 
-Face Recognition System:
-Designed a real-time face recognition system using OpenCV, Dlib, and Face Recognition libraries.
+### 🔹 [Jenni.AI Assistant](https://github.com/Prashanth-TechAI/Jenni.AI)  
+An intelligent voice-based assistant for web searches, note-taking, music, and more.  
 
-6. Professional Experience
-AI/ML Developer Intern:
-Company: Telepathy Infotech Pvt Ltd
+### 🔹 [Human Emotion Detection](https://github.com/Prashanth-TechAI/Human-Emotion-Detection)  
+CNN trained on FER-2013 for real-time emotion classification.  
 
-Duration: September 2024 - Present
+---
 
-Role: Involved in real-world AI projects to develop, optimize, and deploy machine learning models for solving complex business problems.
+## 💼 Experience  
 
-Machine Learning Intern:
-Company: Octopyder Services Pvt Ltd
+- **AI Developer** – *Telepathy Infotech Pvt Ltd* (Sept 2024 – Present)  
+  - Building, optimizing, and deploying **Gen AI models** for business solutions.  
 
-Duration: May 2024 - August 2024
+- **Machine Learning Intern** – *Octopyder Services Pvt Ltd* (May 2024 – Aug 2024)  
+  - Developed an **intrusion detection system** improving web security.  
 
-Role: Built an intrusion detection system for a client's webpage to identify and mitigate potential threats effectively.
+---
 
-7. Education
-BTech in Computer Science and Engineering (AI):
-Institution: Vivekananda Global University
+## 🎓 Education  
 
-Duration: 2021 - 2025
+- **B.Tech, CSE (AI)** – Vivekananda Global University (2021 – 2025) | CGPA: 8.8  
+- **Intermediate** – Sri Nalanda Junior College (2019 – 2021) | 98.4%  
+- **Secondary School** – Radhika Concept School (2018 – 2019) | CGPA: 9.7  
 
-CGPA: 8.68
+---
 
-Board of Intermediate Education:
-Institution: Sri Nalanda Junior College
+## 📬 Contact  
 
-Duration: 2019 - 2021
+📧 Email: [gummalaprashanth509@gmail.com](mailto:gummalaprashanth509@gmail.com)  
+📞 Phone: [+91 9701337681](tel:+919701337681)  
+🔗 LinkedIn: [Gummala Prashanth](https://linkedin.com/in/gummala-prashanth-1a34a3273)  
+💻 GitHub: [Prashanth-TechAI](https://github.com/Prashanth-TechAI)  
+   Huggingface: [prashanth-970](https://huggingface.co/prashanth970)
 
-Percentage: 98.4%
+---
 
-Board of Secondary Education:
-Institution: Radhika Concept School
+## ⚡ Quick Links  
 
-Duration: 2018 - 2019
+- [🌐 Portfolio Website](https://gummalaprashanth.netlify.app/) 
+- [📄 Resume](resume.pdf)  
+- [💬 WhatsApp](https://wa.me/919951879767)  
 
-CGPA: 9.7
+---
 
-8. Contact Information
-Email: gummalaprashanth509@gmail.com
-
-Phone: 09701337681
-
-LinkedIn: Gummala Prashanth
-
-GitHub: Prashanth-TechAI
-
-9. Resume
-A downloadable PDF resume is available for potential employers or clients.
-
-10. Social Media Links
-Email: gummalaprashanth509@gmail.com
-
-Phone: 09701337681
-
-LinkedIn: Gummala Prashanth
-
-11. Summary of Strengths
-Expertise in AI/ML, Generative AI, and LLMs.
-
-Proficient in multiple programming languages and databases.
-
-Hands-on experience with OpenCV, PyTorch, LangChain, and other AI/ML tools.
-
-Strong problem-solving, teamwork, and communication skills.
-
-Proven track record of delivering innovative projects like AI Safe Drive and AI Chatbot.
-
+© 2025 **Gummala Prashanth**. All rights reserved.  
