@@ -1,10 +1,20 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, Linkedin, Download, Github, Smile, Instagram } from 'lucide-react';
+import { Mail, Phone, Linkedin, Download, Github, Smile, Instagram, Briefcase, UserX } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui/dialog';
 import profilePhoto from '@/assets/profile-photo.jpg';
-import resumeFile from '@/assets/resume.pdf'; // ✅ Import resume
+import resumeFile from '@/assets/resume.pdf';
 
 const Hero = () => {
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
   const socialLinks = [
     {
       icon: Mail,
@@ -44,7 +54,23 @@ const Hero = () => {
     },
   ];
 
+  const handleResumeClick = () => {
+    setIsDialogOpen(true);
+  };
+
+  const handleRecruiterClick = () => {
+    // Open/download resume for recruiters
+    window.open(resumeFile, '_blank');
+    setIsDialogOpen(false);
+  };
+
+  const handleNotRecruiterClick = () => {
+    // Just close the dialog, don't open resume
+    setIsDialogOpen(false);
+  };
+
   return (
+    <>
     <section
       id="home"
       className="min-h-screen flex items-center justify-center relative overflow-hidden"
@@ -155,7 +181,7 @@ const Hero = () => {
               <Button
                 size="lg"
                 className="btn-secondary group"
-                onClick={() => window.open(resumeFile, '_blank')} // ✅ Open resume
+                onClick={handleResumeClick}
               >
                 <Download className="mr-2 h-4 w-4 group-hover:animate-bounce" />
                 View Resume
@@ -207,6 +233,48 @@ const Hero = () => {
         </motion.div>
       </motion.div>
     </section>
+
+    {/* Recruiter Confirmation Dialog */}
+    <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+      <DialogContent className="sm:max-w-md">
+        <DialogHeader>
+          <DialogTitle className="text-2xl text-center">
+            Are you a recruiter?
+          </DialogTitle>
+          <DialogDescription className="text-center pt-2">
+            Please let us know if you're a recruiter or hiring manager to access the resume.
+          </DialogDescription>
+        </DialogHeader>
+        
+        <div className="flex flex-col gap-3 py-4">
+          <Button
+            onClick={handleRecruiterClick}
+            className="w-full btn-primary group"
+            size="lg"
+          >
+            <Briefcase className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform" />
+            Yes, I am a recruiter
+          </Button>
+          
+          <Button
+            onClick={handleNotRecruiterClick}
+            variant="outline"
+            className="w-full group"
+            size="lg"
+          >
+            <UserX className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform" />
+            No, I'm not a recruiter
+          </Button>
+        </div>
+
+        <DialogFooter className="sm:justify-center">
+          <p className="text-xs text-muted-foreground text-center">
+            This helps us track resume views from potential employers
+          </p>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+    </>
   );
 };
 

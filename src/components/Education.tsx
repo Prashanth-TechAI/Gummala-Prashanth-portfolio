@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { GraduationCap, Calendar, Award } from 'lucide-react';
+import { GraduationCap, Award } from 'lucide-react';
 
 const Education = () => {
   const ref = useRef(null);
@@ -12,7 +12,7 @@ const Education = () => {
       degree: 'BTech in Computer Science and Engineering (AI)',
       institution: 'Vivekananda Global University',
       period: '2021 - 2025',
-      grade: 'CGPA: 8.8',
+      grade: 'CGPA: 8.76',
       type: 'degree',
       icon: GraduationCap,
     },
@@ -115,11 +115,6 @@ const Education = () => {
                   <p className="text-secondary font-medium mb-3">
                     {edu.institution}
                   </p>
-
-                  <div className="flex items-center gap-2 mb-3 text-sm text-muted-foreground">
-                    <Calendar className="h-4 w-4" />
-                    <span>{edu.period}</span>
-                  </div>
 
                   <div className="inline-flex items-center gap-2 px-3 py-1 bg-secondary/10 rounded-full">
                     <Award className="h-4 w-4 text-secondary" />

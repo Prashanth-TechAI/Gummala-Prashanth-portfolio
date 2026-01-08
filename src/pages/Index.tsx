@@ -9,8 +9,12 @@ import Education from '@/components/Education';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
+import { useVisitTracker } from '@/hooks/use-visit-tracker';
 
 const Index = () => {
+  // Track website visits and send email notifications
+  useVisitTracker();
+
   return (
     <div className="min-h-screen">
       {/* SEO Meta Tags */}
