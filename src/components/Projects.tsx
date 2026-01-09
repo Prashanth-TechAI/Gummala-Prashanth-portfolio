@@ -69,7 +69,7 @@ const Projects = () => {
 
   return (
     <section id="projects" className="py-20 bg-background" ref={ref}>
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : { opacity: 0 }}

@@ -87,7 +87,7 @@ const Hero = () => {
         />
       </div>
 
-      <div className="container mx-auto px-4 py-20 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 py-20 relative z-10">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -99,7 +99,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center lg:text-left lg:-mr-6" // ⬅️ pull text slightly right (towards image)
+            className="text-center lg:text-left lg:-mr-6 px-2 sm:px-0" // ⬅️ pull text slightly right (towards image)
           >
             <motion.div
               initial={{ opacity: 0, scale: 0.5 }}
@@ -126,9 +126,11 @@ const Hero = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-subheading text-white/90 mb-6"
+              className="text-subheading text-white/90 mb-6 break-words"
             >
-              AI Developer  |  Generative AI
+              <span className="block sm:inline">AI Developer</span>
+              <span className="hidden sm:inline">  |  </span>
+              <span className="block sm:inline">Generative AI</span>
             </motion.h2>
 
             <motion.p
@@ -147,7 +149,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="flex justify-center lg:justify-start space-x-6 mb-8"
+              className="flex justify-center lg:justify-start space-x-4 sm:space-x-6 mb-8 flex-wrap gap-2"
             >
               {socialLinks.map((social, index) => {
                 const Icon = social.icon;
@@ -175,7 +177,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
-              className="relative"
+              className="relative flex justify-center lg:justify-start"
             >
               <Button
                 size="lg"
@@ -194,7 +196,7 @@ const Hero = () => {
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: -10, scale: 0.9 }}
                     transition={{ duration: 0.2 }}
-                    className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 flex gap-2 z-50"
+                    className="absolute top-full left-1/2 lg:left-0 transform -translate-x-1/2 lg:translate-x-0 mt-2 flex gap-2 z-50"
                   >
                     <Button
                       size="sm"
@@ -224,7 +226,7 @@ const Hero = () => {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="flex justify-center lg:justify-end lg:-ml-6" // ⬅️ pull image slightly left (towards text)
+            className="flex justify-center lg:justify-end lg:-ml-6 mt-8 lg:mt-0" // ⬅️ pull image slightly left (towards text)
           >
             <motion.div
               whileHover={{ scale: 1.05 }}
@@ -235,7 +237,7 @@ const Hero = () => {
               <img
                 src={profilePhoto}
                 alt="Gummala Prashanth"
-                className="relative w-80 h-80 lg:w-96 lg:h-96 object-cover rounded-full border-4 border-white/20 shadow-2xl"
+                className="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 object-cover rounded-full border-4 border-white/20 shadow-2xl max-w-[90vw]"
               />
               <div className="absolute inset-0 rounded-full bg-gradient-to-br from-secondary/20 to-transparent" />
             </motion.div>

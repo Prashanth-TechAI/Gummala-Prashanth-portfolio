@@ -113,7 +113,7 @@ const Contact = () => {
 
   return (
     <section id="contact" className="py-20 bg-gradient-subtle" ref={ref}>
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : { opacity: 0 }}
@@ -148,7 +148,7 @@ const Contact = () => {
           </motion.p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 max-w-6xl mx-auto">
           {/* Contact Information */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -215,7 +215,7 @@ const Contact = () => {
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="bg-card/80 backdrop-blur-sm rounded-2xl p-8 border border-border/50 shadow-elegant"
+            className="bg-card/80 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-border/50 shadow-elegant"
           >
             <h3 className="text-2xl font-semibold text-foreground mb-6">Send a Message</h3>
             

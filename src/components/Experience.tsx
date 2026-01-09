@@ -28,7 +28,7 @@ const Experience = () => {
 
   return (
     <section id="experience" className="py-20 bg-gradient-subtle" ref={ref}>
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : { opacity: 0 }}
@@ -87,7 +87,7 @@ const Experience = () => {
                 <div className={`ml-12 md:ml-0 w-full md:w-5/12 ${index % 2 === 0 ? 'md:mr-8' : 'md:ml-8'}`}>
                   <motion.div
                     whileHover={{ scale: 1.02, y: -5 }}
-                    className="bg-card border border-border/50 rounded-2xl p-8 shadow-elegant hover:shadow-elegant-lg transition-all duration-300 group"
+                    className="bg-card border border-border/50 rounded-2xl p-6 sm:p-8 shadow-elegant hover:shadow-elegant-lg transition-all duration-300 group"
                   >
                     {/* Header */}
                     <div className="flex items-start justify-between mb-4">

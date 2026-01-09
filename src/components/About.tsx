@@ -42,7 +42,7 @@ const About = () => {
 
   return (
     <section id="about" className="py-20 bg-gradient-subtle" ref={ref}>
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : { opacity: 0 }}
@@ -74,8 +74,8 @@ const About = () => {
             className="relative"
           >
             <div className="absolute inset-0 bg-gradient-to-r from-secondary/5 to-primary/5 rounded-2xl" />
-            <div className="relative bg-card/80 backdrop-blur-sm rounded-2xl p-8 md:p-12 shadow-elegant border border-border/50 text-left space-y-4">
-              <p className="text-body text-muted-foreground leading-relaxed text-lg">
+            <div className="relative bg-card/80 backdrop-blur-sm rounded-2xl p-6 sm:p-8 md:p-12 shadow-elegant border border-border/50 text-left space-y-4">
+              <p className="text-body text-muted-foreground leading-relaxed text-base sm:text-lg">
                 I'm a results-driven AI Developer with a passion for designing intelligent systems
                 that address real-world challenges. My background in Gen AI, machine learning, deep learning,
                 and natural language processing allows me to explore emerging technologies and
@@ -84,7 +84,7 @@ const About = () => {
               </p>
 
               {/* WEDNES AI mention */}
-              <p className="text-body text-muted-foreground leading-relaxed text-lg">
+              <p className="text-body text-muted-foreground leading-relaxed text-base sm:text-lg">
                 I also founded <span className="font-semibold text-secondary">WEDNES AI</span> — 
                 a no-code AI platform to build and deploy AI agents like RAG Agents, SQL agents, Image Gen Agents
                 and smart assistants with ease.

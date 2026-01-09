@@ -14,7 +14,7 @@ const WhatsAppButton = () => {
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Chat on WhatsApp"
-          className="fixed bottom-5 right-5 flex items-center justify-center w-10 h-10 rounded-full bg-green-500 text-white shadow-lg hover:bg-green-600 transition-colors duration-300 animate-pulse"
+          className="fixed bottom-4 right-4 sm:bottom-5 sm:right-5 flex items-center justify-center w-12 h-12 sm:w-10 sm:h-10 rounded-full bg-green-500 text-white shadow-lg hover:bg-green-600 transition-colors duration-300 animate-pulse z-50"
         >
           <MessageCircle className="w-6 h-6" />
         </a>

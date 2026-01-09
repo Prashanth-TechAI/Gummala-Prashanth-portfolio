@@ -16,7 +16,7 @@ const Index = () => {
   useVisitTracker();
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen overflow-x-hidden">
       {/* SEO Meta Tags */}
       <title>Gummala Prashanth-AI Developer & Generative AI Expert</title>
       <meta

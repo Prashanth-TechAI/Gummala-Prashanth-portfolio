@@ -4,14 +4,14 @@ import { Heart } from 'lucide-react';
 const Footer = () => {
   return (
     <footer className="py-12 bg-primary text-primary-foreground">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-          <p className="flex items-center justify-center gap-2 text-sm">
+          <p className="flex flex-wrap items-center justify-center gap-2 text-sm px-4">
             © 2025 Gummala Prashanth. All rights reserved. Greate to have you here!
             <motion.span
               animate={{ scale: [1, 1.2, 1] }}
