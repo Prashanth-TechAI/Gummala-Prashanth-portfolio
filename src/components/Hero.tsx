@@ -1,20 +1,14 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Mail, Phone, Linkedin, Download, Github, Smile, Instagram, Briefcase, UserX } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-} from '@/components/ui/dialog';
+import { useToast } from '@/hooks/use-toast';
 import profilePhoto from '@/assets/profile-photo.jpg';
 import resumeFile from '@/assets/resume.pdf';
 
 const Hero = () => {
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [showOptions, setShowOptions] = useState(false);
+  const { toast } = useToast();
   const socialLinks = [
     {
       icon: Mail,
@@ -55,22 +49,26 @@ const Hero = () => {
   ];
 
   const handleResumeClick = () => {
-    setIsDialogOpen(true);
+    setShowOptions(!showOptions);
   };
 
   const handleRecruiterClick = () => {
     // Open/download resume for recruiters
     window.open(resumeFile, '_blank');
-    setIsDialogOpen(false);
+    setShowOptions(false);
   };
 
   const handleNotRecruiterClick = () => {
-    // Just close the dialog, don't open resume
-    setIsDialogOpen(false);
+    // Show a friendly message and close the options
+    toast({
+      title: 'Thanks for visiting!',
+      description: 'Feel free to explore my portfolio and projects. If you\'re interested in collaboration, reach out via the contact section!',
+      duration: 4000,
+    });
+    setShowOptions(false);
   };
 
   return (
-    <>
     <section
       id="home"
       className="min-h-screen flex items-center justify-center relative overflow-hidden"
@@ -172,11 +170,12 @@ const Hero = () => {
               })}
             </motion.div>
 
-            {/* CTA Button */}
+            {/* CTA Button with Options */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
+              className="relative"
             >
               <Button
                 size="lg"
@@ -186,6 +185,37 @@ const Hero = () => {
                 <Download className="mr-2 h-4 w-4 group-hover:animate-bounce" />
                 View Resume
               </Button>
+
+              {/* Small Option Buttons */}
+              <AnimatePresence>
+                {showOptions && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10, scale: 0.9 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: -10, scale: 0.9 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 flex gap-2 z-50"
+                  >
+                    <Button
+                      size="sm"
+                      onClick={handleRecruiterClick}
+                      className="btn-primary text-xs px-3 py-1.5 h-auto whitespace-nowrap"
+                    >
+                      <Briefcase className="mr-1.5 h-3.5 w-3.5" />
+                      Recruiter
+                    </Button>
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      onClick={handleNotRecruiterClick}
+                      className="text-xs px-3 py-1.5 h-auto whitespace-nowrap bg-white/10 border-white/20 text-white hover:bg-white/20"
+                    >
+                      <UserX className="mr-1.5 h-3.5 w-3.5" />
+                      Not Recruiter
+                    </Button>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </motion.div>
           </motion.div>
 
@@ -233,48 +263,6 @@ const Hero = () => {
         </motion.div>
       </motion.div>
     </section>
-
-    {/* Recruiter Confirmation Dialog */}
-    <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-      <DialogContent className="sm:max-w-md">
-        <DialogHeader>
-          <DialogTitle className="text-2xl text-center">
-            Are you a recruiter?
-          </DialogTitle>
-          <DialogDescription className="text-center pt-2">
-            Please let us know if you're a recruiter or hiring manager to access the resume.
-          </DialogDescription>
-        </DialogHeader>
-        
-        <div className="flex flex-col gap-3 py-4">
-          <Button
-            onClick={handleRecruiterClick}
-            className="w-full btn-primary group"
-            size="lg"
-          >
-            <Briefcase className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform" />
-            Yes, I am a recruiter
-          </Button>
-          
-          <Button
-            onClick={handleNotRecruiterClick}
-            variant="outline"
-            className="w-full group"
-            size="lg"
-          >
-            <UserX className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform" />
-            No, I'm not a recruiter
-          </Button>
-        </div>
-
-        <DialogFooter className="sm:justify-center">
-          <p className="text-xs text-muted-foreground text-center">
-            This helps us track resume views from potential employers
-          </p>
-        </DialogFooter>
-      </DialogContent>
-    </Dialog>
-    </>
   );
 };
 
