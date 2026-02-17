@@ -65,7 +65,7 @@ const Skills = () => {
     {
       icon: Users,
       title: 'AI Agents',
-      description: 'CrewAI, Smola Agents, OpenAI agent SDK',
+      description: 'CrewAI, Smola Agents, OpenAI agent SDK, Agno AI',
       color: 'text-teal-500',
       bg: 'bg-teal-500/10',
     },

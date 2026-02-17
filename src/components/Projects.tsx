@@ -17,6 +17,13 @@ const Projects = () => {
       tags: ['No-Code', 'AI Agents', 'RAG', 'Platform'],
     },
     {
+      title: 'Get JustDial',
+      description:
+        'Developed a web application that allows users to search for businesses and services on JustDial using AI-powered search and filtering capabilities.',
+      link: 'https://github.com/Prashanth-TechAI/Get-Justdial',
+      tags: ['AI', 'Web Scraping', 'Python', 'FastAPI'],
+    },
+    {
       title: 'AI Safe Drive',
       description:
         'Developed a driver monitoring system using deep CNNs to detect facial emotions, dynamically play music based on mood, and trigger an alarm if the driver falls asleep.',
