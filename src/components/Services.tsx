@@ -1,111 +1,94 @@
-import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
-import { useRef } from 'react';
 import { Bot, TrendingUp, Camera } from 'lucide-react';
+import { SectionHeader } from '@/components/ui/section-header';
+import { Reveal } from '@/components/ui/reveal';
 
-const Services = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
+// Card N comes from: left, bottom, right
+const dirFor = (i: number): { x: number; y: number } => {
+  const m = i % 3;
+  if (m === 0) return { x: -90, y: 0 };
+  if (m === 2) return { x: 90, y: 0 };
+  return { x: 0, y: 80 };
+};
 
-  const services = [
-    {
-      icon: Bot,
-      title: 'Generative AI & LLM Solutions',
-      description:
-        'Developing custom generative AI applications and fine-tuning large language models (LLMs) for chatbots, content generation, and advanced NLP applications using RAG pipelines.',
-      gradient: 'from-blue-500 to-purple-600',
-    },
-    {
-      icon: TrendingUp,
-      title: 'Machine Learning & Model Deployment',
-      description:
-        'Designing, training, and deploying ML pipelines that optimize performance, scalability, and real-time insights for production environments.',
-      gradient: 'from-green-500 to-teal-600',
-    },
-    {
-      icon: Camera,
-      title: 'Computer Vision & Image Analysis',
-      description:
-        'Implementing OCR Models, deep learning techniques for object detection, facial recognition, emotion detection, and other vision-based applications.',
-      gradient: 'from-orange-500 to-red-600',
-    },
-  ];
+const services = [
+  {
+    icon: Bot,
+    title: 'Generative AI & LLM Solutions',
+    description:
+      'Custom generative-AI applications and fine-tuned large language models for chatbots, content generation, and advanced NLP — built with reliable RAG pipelines.',
+    accent: 'from-indigo-400/40 to-violet-500/40',
+  },
+  {
+    icon: TrendingUp,
+    title: 'Machine Learning & Deployment',
+    description:
+      'End-to-end ML pipelines designed, trained and deployed for performance, scalability and real-time insight in production environments.',
+    accent: 'from-emerald-400/40 to-teal-500/40',
+  },
+  {
+    icon: Camera,
+    title: 'Computer Vision & Image Analysis',
+    description:
+      'OCR systems, object detection, facial recognition, emotion detection — deep-learning vision applications shaped to the problem at hand.',
+    accent: 'from-amber-400/40 to-rose-500/40',
+  },
+];
 
-  return (
-    <section id="services" className="py-20 bg-background" ref={ref}>
-      <div className="container mx-auto px-4 sm:px-6">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-          transition={{ duration: 0.6, staggerChildren: 0.2 }}
-          className="text-center mb-16"
-        >
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            className="inline-block mb-4 px-4 py-2 bg-secondary/10 rounded-full text-sm font-medium text-secondary"
-          >
-            Services
-          </motion.div>
+const Services = () => (
+  <section id="services" className="relative py-20 sm:py-24 lg:py-32 overflow-hidden">
+    {/* Hairline gold dividers top & bottom */}
+    <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-secondary/30 to-transparent" />
+    <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-secondary/30 to-transparent" />
 
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-heading text-foreground mb-4"
-          >
-            What I Offer
-          </motion.h2>
+    <div className="container mx-auto px-5 sm:px-8 lg:px-10">
+      <SectionHeader
+        eyebrow="Services"
+        title="What I offer"
+        subtitle="Comprehensive AI and ML solutions, tailored carefully to the shape of your problem."
+      />
 
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-body text-muted-foreground max-w-2xl mx-auto"
-          >
-            Comprehensive AI and ML solutions tailored to your business needs
-          </motion.p>
-        </motion.div>
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7 lg:gap-8">
+        {services.map((service, i) => {
+          const Icon = service.icon;
+          const d = dirFor(i);
+          return (
+            <Reveal key={service.title} x={d.x} y={d.y} delay={i * 0.1}>
+              <article className="card-premium p-8 h-full flex flex-col group overflow-hidden">
+                {/* Soft gradient wash on hover */}
+                <div
+                  className={`absolute inset-0 rounded-[inherit] bg-gradient-to-br ${service.accent} opacity-0 group-hover:opacity-30 transition-opacity duration-500 pointer-events-none`}
+                  aria-hidden
+                />
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => {
-            const Icon = service.icon;
-            return (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 50 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-                transition={{ duration: 0.8, delay: index * 0.2 }}
-                whileHover={{ scale: 1.02, y: -5 }}
-                className="group relative overflow-hidden rounded-2xl bg-card border border-border/50 p-8 shadow-elegant hover:shadow-elegant-lg transition-all duration-300"
-              >
-                {/* Background Gradient */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-300`} />
-                
-                {/* Icon */}
-                <div className={`inline-flex p-3 rounded-xl bg-gradient-to-br ${service.gradient} mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                  <Icon className="h-6 w-6 text-white" />
+                {/* Icon plate — embossed gold */}
+                <div className="relative mb-7">
+                  <div className="inline-flex p-[1px] rounded-2xl bg-gradient-gold shadow-emboss-sm">
+                    <div className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-card">
+                      <Icon className="h-6 w-6 text-secondary" strokeWidth={1.6} />
+                    </div>
+                  </div>
                 </div>
 
-                {/* Content */}
-                <h3 className="text-xl font-semibold text-foreground mb-4 group-hover:text-primary transition-colors duration-300">
+                <h3 className="relative font-playfair text-2xl font-semibold text-foreground mb-4 leading-tight tracking-tight">
                   {service.title}
                 </h3>
-                
-                <p className="text-muted-foreground leading-relaxed">
+
+                <p className="relative text-muted-foreground leading-relaxed">
                   {service.description}
                 </p>
 
-                {/* Hover Effect */}
-                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-secondary to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
-              </motion.div>
-            );
-          })}
-        </div>
+                {/* Bottom hairline that draws on hover */}
+                <span
+                  className="absolute bottom-0 left-6 right-6 h-px origin-left scale-x-0 bg-gradient-to-r from-transparent via-secondary to-transparent transition-transform duration-700 group-hover:scale-x-100"
+                  aria-hidden
+                />
+              </article>
+            </Reveal>
+          );
+        })}
       </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+);
 
 export default Services;

@@ -9,29 +9,25 @@ import Education from '@/components/Education';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
+import AmbientStage from '@/components/AmbientStage';
 import { useVisitTracker } from '@/hooks/use-visit-tracker';
+import { useSmoothScroll } from '@/hooks/use-smooth-scroll';
 
 const Index = () => {
+  // Inertial smooth scroll (Lenis) — Apple-grade glide on wheel/trackpad.
+  useSmoothScroll();
+
   // Track website visits and send email notifications
   useVisitTracker();
 
   return (
     <div className="min-h-screen overflow-x-hidden">
-      {/* SEO Meta Tags */}
-      <title>Gummala Prashanth-AI Developer & Generative AI Expert</title>
-      <meta
-        name="description"
-        content="Gummala Prashanth - Professional AI/ML Engineer specializing in Generative AI, LLMs, Machine Learning, and Deep Learning. Expert in Python, OpenCV, PyTorch, and LangChain."
-      />
-      <meta
-        name="keywords"
-        content="AI Engineer, Machine Learning, Generative AI, LLM Expert, Python Developer, Deep Learning, Computer Vision, Data Science"
-      />
-      <link rel="canonical" href="https://gummalaprashanth.netlify.app/" />
+      {/* Fixed dark cinematic stage — sits behind everything, never scrolls */}
+      <AmbientStage />
 
-      {/* Portfolio Sections */}
+      {/* Portfolio Sections — sit ON TOP of the AmbientStage */}
       <Navigation />
-      <main>
+      <main className="relative">
         <Hero />
         <About />
         <Services />
