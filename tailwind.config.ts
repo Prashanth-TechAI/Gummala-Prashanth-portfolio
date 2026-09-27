@@ -21,6 +21,8 @@ export default {
 				inter: ['Inter', 'sans-serif'],
 				playfair: ['"Playfair Display"', 'serif'],
 				cormorant: ['"Cormorant Garamond"', 'serif'],
+				anton: ['Anton', 'Impact', 'sans-serif'],
+				script: ['"Kaushan Script"', 'cursive'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',

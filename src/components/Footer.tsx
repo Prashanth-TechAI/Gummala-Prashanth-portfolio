@@ -19,47 +19,29 @@ const Footer = () => {
   }, []);
 
   return (
-    <footer className="relative bg-primary text-primary-foreground overflow-hidden">
-      {/* Top hairline gold */}
-      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-secondary/60 to-transparent" />
-
-      {/* Soft gold radial */}
-      <div
-        className="absolute -top-40 left-1/2 -translate-x-1/2 w-[40rem] h-[40rem] pointer-events-none opacity-20"
-        style={{ background: 'var(--gradient-radial-gold)' }}
-        aria-hidden
-      />
-
-      <div className="container relative mx-auto px-5 sm:px-8 lg:px-10 py-12 sm:py-14">
-        <Reveal y={16} className="flex flex-col items-center gap-5 text-center">
-          {/* Monogram */}
-          <div className="font-playfair text-3xl font-bold tracking-tight">
-            <span className="text-gold-gradient">G</span>
-            <span className="text-primary-foreground/90">P</span>
-          </div>
-
-          {/* Ornament */}
-          <div className="ornament">
-            <span className="ornament-line w-16" />
-            <span className="ornament-dot" />
-            <span className="ornament-line w-16" />
-          </div>
-
-          {/* Tagline */}
-          <p className="text-sm text-primary-foreground/70 max-w-md leading-relaxed">
-            Designing intelligent systems with care, craftsmanship, and a quiet kind
-            of obsession.
+    <footer className="relative overflow-hidden bg-[#141414] text-white">
+      <div className="mx-auto max-w-7xl px-5 pt-16 sm:px-8 lg:px-10">
+        <Reveal y={16} className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <p className="max-w-md text-lg leading-relaxed text-white/70">
+            Designing intelligent systems with care, craftsmanship, and a quiet kind of obsession.
           </p>
-
-          {/* Copyright */}
-          <p className="flex flex-wrap items-center justify-center gap-2 text-xs text-primary-foreground/60 tracking-wide">
+          <p className="flex flex-wrap items-center gap-2 text-sm text-white/50">
             © {year} Gummala Prashanth. Crafted with
-            <Heart className="h-3.5 w-3.5 text-rose-400 fill-current animate-soft-pulse" />
+            <Heart className="h-3.5 w-3.5 fill-current text-rose-400" />
             and curiosity.
           </p>
         </Reveal>
       </div>
 
+      {/* Giant signature name, echoing the hero */}
+      <div aria-hidden className="relative mt-10 select-none">
+        <p className="whitespace-nowrap text-center font-anton uppercase leading-[0.8] text-white/[0.07] text-[21vw]">
+          Prashanth
+        </p>
+        <p className="absolute right-[8%] top-[18%] -rotate-[4deg] font-script text-secondary text-[5vw]">
+          AI Engineer
+        </p>
+      </div>
       {/* Back-to-top — fixed floating button, stacked above the WhatsApp FAB */}
       <AnimatePresence>
         {showTop && (

@@ -1,23 +1,23 @@
-import { useRef, type ReactNode } from 'react';
-import { useInView } from 'framer-motion';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
 
 /**
- * CSS-driven reveal-on-scroll. Pure 2D translate + opacity — no perspective,
- * no rotate, no scale. Compositor-thread only. Once "in view" flips, the GPU
- * runs a single composited transition, then there is zero ongoing work.
+ * Scroll reveal with both an entrance and an exit.
  *
- * The trigger margin is tuned so the element is *visibly inside* the viewport
- * before the animation starts — otherwise with smooth-scroll the motion plays
- * before the user has settled on the section, making it feel like nothing
- * animated.
+ * - Entering (from below): glides up from `y`, fades in and settles from 97% scale.
+ * - Leaving through the top: drifts up a little and fades out, so content
+ *   hands over to the next section instead of just scrolling away.
+ * - Scrolling back reverses both, because the state follows the viewport.
+ *
+ * Only opacity and transform animate, so the work stays on the compositor.
+ * Visitors who prefer reduced motion get the content immediately.
  */
 
-const TRANSITION =
-  'transition-[opacity,transform] duration-[800ms] ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none';
+type Phase = 'below' | 'in' | 'above';
 
-// Element must be 120px above the viewport bottom before triggering — i.e.
-// the user has scrolled it well into view.
-const TRIGGER_MARGIN = '0px 0px -120px 0px';
+const EASE = 'cubic-bezier(0.22, 1, 0.36, 1)';
+
+const prefersReduced = () =>
+  typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 type RevealProps = {
   children: ReactNode;
@@ -28,51 +28,69 @@ type RevealProps = {
   rotateX?: number;
   rotateY?: number;
   className?: string;
+  /** Play the entrance once and never exit. */
   once?: boolean;
 };
 
-export const Reveal = ({
-  children,
-  delay = 0,
-  y = 60,
-  x = 0,
-  className,
-  once = true,
-}: RevealProps) => {
+export const Reveal = ({ children, delay = 0, y = 48, x = 0, className, once = false }: RevealProps) => {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once, margin: TRIGGER_MARGIN });
+  const [phase, setPhase] = useState<Phase>(() => (prefersReduced() ? 'in' : 'below'));
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || prefersReduced()) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setPhase('in');
+          if (once) observer.disconnect();
+        } else {
+          // Left through the top of the screen, or is still below it.
+          setPhase(entry.boundingClientRect.top < 0 ? 'above' : 'below');
+        }
+      },
+      // Enter once the element is clearly on screen; exit a little before it's gone.
+      { rootMargin: '0px 0px -12% 0px', threshold: 0.08 },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [once]);
+
+  const transform =
+    phase === 'in'
+      ? 'translate3d(0,0,0) scale(1)'
+      : phase === 'below'
+        ? `translate3d(${x}px, ${y}px, 0) scale(0.97)`
+        : `translate3d(0, ${-Math.round(y * 0.5)}px, 0) scale(0.98)`;
 
   return (
     <div
       ref={ref}
+      className={className}
       style={{
-        transitionDelay: delay ? `${delay}s` : undefined,
-        transform: inView
-          ? 'translate3d(0,0,0)'
-          : `translate3d(${x}px, ${y}px, 0)`,
-        opacity: inView ? 1 : 0,
-        willChange: inView ? 'auto' : 'opacity, transform',
+        opacity: phase === 'in' ? 1 : 0,
+        transform,
+        transition: `opacity 0.9s ${EASE}, transform 1.1s ${EASE}`,
+        // Entrance respects the stagger delay; exits leave together, immediately.
+        transitionDelay: phase === 'in' && delay ? `${delay}s` : '0s',
+        willChange: phase === 'in' ? 'auto' : 'opacity, transform',
       }}
-      className={[TRANSITION, className].filter(Boolean).join(' ')}
     >
       {children}
     </div>
   );
 };
 
-export const RevealStagger = ({
-  children,
-  className,
-}: {
-  children: ReactNode;
-  className?: string;
-}) => <div className={className}>{children}</div>;
+export const RevealStagger = ({ children, className }: { children: ReactNode; className?: string }) => (
+  <div className={className}>{children}</div>
+);
 
 export const RevealItem = ({
   children,
   index = 0,
   className,
-  y = 60,
+  y = 48,
   cap = 5,
   stagger = 0.08,
 }: {

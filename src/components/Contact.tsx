@@ -3,7 +3,6 @@ import {
   Mail, Phone, Linkedin, Github, MessageSquare,
   Send, Smile, ArrowUpRight,
 } from 'lucide-react';
-import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
 import { SectionHeader } from '@/components/ui/section-header';
 import { Reveal } from '@/components/ui/reveal';
@@ -42,7 +41,9 @@ const contactInfo = [
 ];
 
 const inputClass =
-  'w-full rounded-xl bg-background/60 border border-border/60 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/70 transition-all duration-300 focus:outline-none focus:border-secondary/60 focus:bg-card focus:ring-2 focus:ring-secondary/30 shadow-emboss-sm';
+  'w-full rounded-xl border border-[#E7E7EA] bg-[#F7F7F8] px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/70 transition-colors duration-300 focus:border-[#141414] focus:bg-white focus:outline-none';
+
+const labelClass = 'mb-2 block text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground';
 
 const Contact = () => {
   const { toast } = useToast();
@@ -94,91 +95,73 @@ const Contact = () => {
   };
 
   return (
-    <section
-      id="contact"
-      className="relative py-20 sm:py-24 lg:py-32 overflow-hidden"
-    >
-      <div className="container relative mx-auto px-5 sm:px-8 lg:px-10">
+    <section id="contact" className="relative py-20 sm:py-24 lg:py-28">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
         <SectionHeader
-          eyebrow="Get In Touch"
+          word="Contact"
+          script="hello"
           title="Let's create something memorable"
           subtitle="Have a project in mind, a question, or just want to say hello? I'd love to hear from you."
         />
 
-        <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 max-w-6xl mx-auto">
-          {/* Left — info */}
-          <Reveal x={-72} y={0} rotateX={6} className="lg:col-span-5 space-y-7">
-            <div>
-              <h3 className="font-playfair text-2xl font-semibold text-foreground mb-3 tracking-tight">
-                Contact information
-              </h3>
-              <p className="text-muted-foreground leading-relaxed">
-                Reach out through any of these channels. I'm always excited to discuss
-                new opportunities and meaningful AI work.
+        <div className="grid gap-6 lg:grid-cols-12">
+          {/* Left — contact channels on a black panel */}
+          <Reveal y={24} className="lg:col-span-5">
+            <div className="flex h-full flex-col rounded-3xl border border-[#141414]/10 bg-white/80 p-7 text-[#141414] sm:p-9">
+              <h3 className="font-anton text-4xl uppercase leading-none">Contact information</h3>
+              <p className="mt-4 leading-relaxed text-muted-foreground">
+                Reach out through any of these channels. I'm always excited to discuss new opportunities and
+                meaningful AI work.
               </p>
-            </div>
 
-            <ul className="space-y-3">
-              {contactInfo.map((info, index) => {
-                const Icon = info.icon;
-                return (
-                  <li key={info.label}>
-                    <Reveal delay={0.05 + index * 0.05} x={-12} y={0}>
+              <ul className="mt-8 divide-y divide-[#141414]/10 border-y border-[#141414]/10">
+                {contactInfo.map((info) => {
+                  const Icon = info.icon;
+                  return (
+                    <li key={info.label}>
                       <a
                         href={info.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="card-premium flex items-center gap-4 p-4 group"
+                        className="group flex items-center gap-4 py-4"
                       >
-                        <div className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-secondary/10 ring-1 ring-secondary/20 group-hover:bg-secondary/15 group-hover:ring-secondary/40 transition-colors duration-500">
-                          <Icon className="h-4 w-4 text-secondary" strokeWidth={1.8} />
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <div className="text-overline text-secondary/80">{info.label}</div>
-                          <div className="text-sm font-medium text-foreground truncate">
-                            {info.value}
-                          </div>
-                        </div>
-                        <ArrowUpRight className="h-4 w-4 text-muted-foreground transition-all duration-500 group-hover:text-secondary group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                        <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-[#141414] text-secondary transition-colors duration-300 group-hover:bg-secondary group-hover:text-[#141414]">
+                          <Icon className="h-4 w-4" strokeWidth={1.8} />
+                        </span>
+                        <span className="min-w-0 flex-1">
+                          <span className="block text-xs uppercase tracking-[0.14em] text-muted-foreground">{info.label}</span>
+                          <span className="block truncate font-medium">{info.value}</span>
+                        </span>
+                        <ArrowUpRight className="h-4 w-4 text-[#141414]/35 transition-colors duration-300 group-hover:text-[#141414]" />
                       </a>
-                    </Reveal>
-                  </li>
-                );
-              })}
-            </ul>
+                    </li>
+                  );
+                })}
+              </ul>
 
-            <Button
-              size="lg"
-              className="btn-secondary group w-full"
-              onClick={() => window.open('https://wa.me/919951879767', '_blank')}
-            >
-              <MessageSquare className="mr-2 h-4 w-4 transition-transform group-hover:-translate-y-0.5" />
-              Chat on WhatsApp
-            </Button>
+              <button
+                type="button"
+                onClick={() => window.open('https://wa.me/919951879767', '_blank')}
+                className="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-gradient-gold px-6 py-3.5 text-sm font-semibold text-[#141414] transition-transform duration-300 hover:-translate-y-0.5"
+              >
+                <MessageSquare className="h-4 w-4" />
+                Chat on WhatsApp
+              </button>
+            </div>
           </Reveal>
 
           {/* Right — form */}
-          <Reveal x={72} y={0} rotateX={6} delay={0.1} className="lg:col-span-7">
-            <div className="card-premium p-6 sm:p-8 lg:p-9 relative overflow-hidden gold-corners">
-              <span className="corner corner-tl" />
-              <span className="corner corner-tr" />
-              <span className="corner corner-bl" />
-              <span className="corner corner-br" />
-
-              <h3 className="font-playfair text-2xl font-semibold text-foreground mb-2 tracking-tight">
-                Send a message
-              </h3>
-              <p className="text-sm text-muted-foreground mb-7">
+          <Reveal y={24} delay={0.1} className="lg:col-span-7">
+            <div className="flex h-full flex-col rounded-3xl border border-[#E7E7EA] bg-white/90 p-7 sm:p-9">
+              <h3 className="text-2xl font-semibold tracking-tight text-foreground">Send a message</h3>
+              <p className="mt-2 text-sm text-muted-foreground">
                 Fill in your details and I'll get back to you shortly.
               </p>
 
-              <form onSubmit={handleSubmit} className="space-y-5">
-                <div className="grid sm:grid-cols-2 gap-5">
+              <form onSubmit={handleSubmit} className="mt-8 flex flex-1 flex-col gap-5">
+                <div className="grid gap-5 sm:grid-cols-2">
                   <div>
-                    <label
-                      htmlFor="name"
-                      className="block text-overline text-secondary/80 mb-2"
-                    >
+                    <label htmlFor="name" className={labelClass}>
                       Name
                     </label>
                     <input
@@ -193,10 +176,7 @@ const Contact = () => {
                     />
                   </div>
                   <div>
-                    <label
-                      htmlFor="email"
-                      className="block text-overline text-secondary/80 mb-2"
-                    >
+                    <label htmlFor="email" className={labelClass}>
                       Email
                     </label>
                     <input
@@ -212,11 +192,8 @@ const Contact = () => {
                   </div>
                 </div>
 
-                <div>
-                  <label
-                    htmlFor="message"
-                    className="block text-overline text-secondary/80 mb-2"
-                  >
+                <div className="flex flex-1 flex-col">
+                  <label htmlFor="message" className={labelClass}>
                     Message
                   </label>
                   <textarea
@@ -227,28 +204,27 @@ const Contact = () => {
                     placeholder="Tell me about your project, idea or question…"
                     rows={6}
                     required
-                    className={`${inputClass} resize-none`}
+                    className={`${inputClass} min-h-[10rem] flex-1 resize-none`}
                   />
                 </div>
 
-                <Button
+                <button
                   type="submit"
-                  size="lg"
-                  className="btn-primary w-full group"
                   disabled={isSubmitting}
+                  className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#141414] px-6 py-4 text-sm font-semibold text-white transition-transform duration-300 hover:-translate-y-0.5 disabled:opacity-60"
                 >
                   {isSubmitting ? (
-                    <span className="flex items-center">
-                      <span className="h-4 w-4 mr-2 rounded-full border-2 border-white/30 border-t-white animate-spin" />
+                    <>
+                      <span className="h-4 w-4 animate-spin rounded-full border-2 border-white/30 border-t-white" />
                       Sending…
-                    </span>
+                    </>
                   ) : (
-                    <span className="flex items-center">
-                      <Send className="mr-2 h-4 w-4 transition-transform duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    <>
+                      <Send className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                       Send Message
-                    </span>
+                    </>
                   )}
-                </Button>
+                </button>
               </form>
             </div>
           </Reveal>

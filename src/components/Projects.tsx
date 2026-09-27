@@ -1,4 +1,5 @@
-import { ArrowUpRight, Star } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
+import wednesShot from '@/assets/wednes-ai-screenshot.webp';
 import { SectionHeader } from '@/components/ui/section-header';
 import { Reveal } from '@/components/ui/reveal';
 
@@ -35,7 +36,7 @@ const projects = [
   {
     title: 'Intrusion Detection System',
     description:
-      'IDS using a Random-Forest classifier on network traffic — 76% accuracy on anomaly detection across the test corpus.',
+      'Random-Forest classifier that monitors network traffic and flags anomalous, potentially malicious requests to a client website.',
     link: 'https://github.com/Prashanth-TechAI/INTRUSION-DETECTION-SYSTEM',
     tags: ['Machine Learning', 'Random Forest', 'Security', 'Python'],
   },
@@ -69,89 +70,98 @@ const projects = [
   },
 ];
 
-const Projects = () => (
-  <section id="projects" className="relative py-20 sm:py-24 lg:py-32 overflow-hidden">
-    <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-secondary/30 to-transparent" />
+const featured = projects.find((p) => p.featured)!;
+const others = projects.filter((p) => !p.featured);
 
-    <div className="container relative mx-auto px-5 sm:px-8 lg:px-10">
+const Projects = () => (
+  <section id="projects" className="relative py-20 sm:py-24 lg:py-28">
+    <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
       <SectionHeader
-        eyebrow="Selected Work"
+        word="Projects"
+        script="work"
         title="Notable projects"
         subtitle="A curated selection of AI systems I've designed, shipped, and learned from."
       />
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7 lg:gap-8">
-        {projects.map((project, index) => (
-          <Reveal
-            key={project.title}
-            delay={Math.min(index, 4) * 0.08}
-            x={index % 2 === 0 ? -90 : 90}
-            y={20}
-          >
-            <article className="card-premium p-7 group flex flex-col relative overflow-hidden h-full">
-              {/* Featured ribbon */}
-              {project.featured && (
-                <div className="absolute -top-px right-6 px-3 py-1 rounded-b-md bg-gradient-gold shadow-emboss-sm flex items-center gap-1.5">
-                  <Star className="h-3 w-3 text-primary" fill="currentColor" />
-                  <span className="text-[0.65rem] font-bold uppercase tracking-[0.18em] text-primary">
-                    Featured
+      {/* Featured: black banner with the live product in a browser frame */}
+      <Reveal y={24}>
+        <a
+          href={featured.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group relative block overflow-hidden rounded-[2rem] bg-[#141414] text-white"
+        >
+          <div
+            aria-hidden
+            className="pointer-events-none absolute -bottom-40 -left-24 h-96 w-96 rounded-full opacity-25 blur-3xl"
+            style={{ background: 'radial-gradient(circle, hsl(var(--gold)) 0%, transparent 70%)' }}
+          />
+          <div className="relative grid items-center gap-10 p-8 sm:p-12 lg:grid-cols-12 lg:gap-12 lg:p-14">
+            <div className="lg:col-span-5">
+              <p className="-rotate-[3deg] font-script text-3xl text-secondary">Featured</p>
+              <h3 className="mt-5 font-anton uppercase leading-[0.85] text-[clamp(3.5rem,8vw,6.5rem)]">
+                {featured.title}
+              </h3>
+              <p className="mt-6 text-lg leading-relaxed text-white/70">{featured.description}</p>
+              <p className="mt-5 text-sm text-white/45">{featured.tags.join('  ·  ')}</p>
+              <span className="mt-8 inline-flex items-center gap-2 rounded-full bg-secondary px-6 py-3 text-sm font-semibold text-[#141414] transition-transform duration-300 group-hover:-translate-y-0.5">
+                Visit live site
+                <ArrowUpRight className="h-4 w-4" />
+              </span>
+            </div>
+
+            {/* Browser frame; tilts upright and lifts on hover */}
+            <div className="lg:col-span-7">
+              <div className="overflow-hidden rounded-xl bg-white shadow-[0_40px_80px_-30px_rgba(0,0,0,0.8)] ring-1 ring-white/10 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] lg:rotate-[1.5deg] lg:group-hover:rotate-0 lg:group-hover:-translate-y-1">
+                <div className="flex items-center gap-2 border-b border-black/5 bg-[#F2F2F4] px-4 py-2.5">
+                  <span className="h-2.5 w-2.5 rounded-full bg-[#FF5F57]" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-[#FEBC2E]" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-[#28C840]" />
+                  <span className="ml-3 truncate rounded-md bg-white px-3 py-0.5 text-xs text-black/50">
+                    wednes-ai.vercel.app
                   </span>
                 </div>
-              )}
-
-              {/* Soft gold wash on hover */}
-              <div
-                className="absolute inset-0 rounded-[inherit] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                style={{ background: 'var(--gradient-gold-soft)' }}
-                aria-hidden
-              />
-
-              <div className="relative flex flex-col flex-1">
-                {/* Project number */}
-                <div className="text-overline text-secondary/70 mb-3">
-                  {String(index + 1).padStart(2, '0')} / {String(projects.length).padStart(2, '0')}
-                </div>
-
-                <h3 className="font-playfair text-2xl font-semibold text-foreground mb-3 tracking-tight leading-tight group-hover:text-secondary transition-colors duration-500">
-                  {project.title}
-                </h3>
-
-                <p className="text-muted-foreground leading-relaxed mb-6 flex-1">
-                  {project.description}
-                </p>
-
-                {/* Tags */}
-                <div className="flex flex-wrap gap-1.5 mb-6">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-2.5 py-1 text-[0.7rem] font-medium tracking-wide rounded-full border border-border/60 bg-accent/60 text-foreground/70"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 self-start link-gold text-sm font-medium text-foreground hover:text-secondary transition-colors duration-300"
-                >
-                  View Project
-                  <ArrowUpRight className="h-4 w-4 transition-transform duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </a>
+                <img
+                  src={wednesShot}
+                  alt="WEDNES AI home page: Build AI Agents with SQL Agents"
+                  width={1440}
+                  height={720}
+                  loading="lazy"
+                  decoding="async"
+                  className="block w-full"
+                />
               </div>
+            </div>
+          </div>
+        </a>
+      </Reveal>
 
-              {/* Bottom hairline */}
-              <span
-                className="absolute bottom-0 left-7 right-7 h-px origin-left scale-x-0 bg-gradient-to-r from-transparent via-secondary to-transparent transition-transform duration-700 group-hover:scale-x-100"
-                aria-hidden
-              />
-            </article>
-          </Reveal>
+      {/* The rest: large editorial rows; each row turns black on hover */}
+      <ul className="mt-10 border-t border-[#141414]/15">
+        {others.map((project) => (
+          <li key={project.title} className="border-b border-[#141414]/15">
+            <a
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group grid items-center gap-3 rounded-2xl px-4 py-7 transition-colors duration-300 hover:bg-white/70 sm:px-6 lg:grid-cols-12 lg:gap-8"
+            >
+              <h3 className="font-anton text-3xl uppercase leading-none text-[#141414] transition-colors duration-300 group-hover:text-secondary sm:text-4xl lg:col-span-4">
+                {project.title}
+              </h3>
+              <p className="leading-relaxed text-muted-foreground lg:col-span-5">
+                {project.description}
+              </p>
+              <div className="flex items-center justify-between gap-4 lg:col-span-3">
+                <p className="text-sm text-foreground/55">
+                  {project.tags.slice(0, 2).join(' · ')}
+                </p>
+                <ArrowUpRight className="h-6 w-6 shrink-0 text-[#141414] transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-secondary" />
+              </div>
+            </a>
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   </section>
 );

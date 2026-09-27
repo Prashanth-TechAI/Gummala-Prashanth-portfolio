@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600;700&family=Anton&family=Kaushan+Script&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -13,7 +13,7 @@
 @layer base {
   :root {
     /* Surfaces */
-    --background: 36 30% 98%;          /* warm cream */
+    --background: 40 20% 96%;          /* warm off-white #F7F6F3 */
     --foreground: 222 60% 8%;          /* near-black navy */
 
     --card: 0 0% 100%;
@@ -39,14 +39,14 @@
     --gold-glow: 42 80% 78%;
 
     /* Neutral */
-    --accent: 36 22% 94%;
+    --accent: 220 25% 96%;
     --accent-foreground: 222 47% 10%;
 
-    --muted: 36 18% 94%;
+    --muted: 220 25% 96%;
     --muted-foreground: 222 14% 38%;
 
-    --border: 36 18% 88%;
-    --input: 36 18% 88%;
+    --border: 220 18% 90%;
+    --input: 220 18% 90%;
     --ring: 38 62% 50%;
 
     --destructive: 0 70% 48%;
@@ -57,7 +57,7 @@
     --gradient-gold: linear-gradient(135deg, hsl(32 55% 36%) 0%, hsl(38 62% 50%) 50%, hsl(42 70% 70%) 100%);
     --gradient-gold-soft: linear-gradient(135deg, hsl(38 62% 50% / 0.18) 0%, hsl(42 70% 70% / 0.10) 100%);
     --gradient-hero: radial-gradient(ellipse at top, hsl(222 35% 18%) 0%, hsl(222 47% 8%) 60%, hsl(222 50% 5%) 100%);
-    --gradient-subtle: linear-gradient(180deg, hsl(36 30% 98%) 0%, hsl(36 22% 94%) 100%);
+    --gradient-subtle: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(220 25% 96%) 100%);
     --gradient-radial-gold: radial-gradient(circle at 50% 50%, hsl(38 62% 50% / 0.18) 0%, transparent 65%);
 
     /* Embossed shadow stack — inset highlight + inset shade + outer drop */
@@ -98,13 +98,13 @@
 
   .dark {
     /* Apple-grade cinematic dark palette */
-    --background: 222 50% 4%;
+    --background: 226 80% 3%;
     --foreground: 36 28% 96%;
 
-    --card: 222 35% 9%;
+    --card: 226 55% 7%;
     --card-foreground: 36 28% 96%;
 
-    --popover: 222 40% 7%;
+    --popover: 226 60% 5%;
     --popover-foreground: 36 28% 96%;
 
     /* In dark mode "primary" stays the deep navy (used for dark-on-dark blocks) */
@@ -121,14 +121,14 @@
     --gold-light: 42 72% 72%;
     --gold-glow: 42 85% 82%;
 
-    --accent: 222 30% 11%;
+    --accent: 226 45% 10%;
     --accent-foreground: 36 28% 96%;
 
-    --muted: 222 28% 11%;
+    --muted: 226 45% 10%;
     --muted-foreground: 36 14% 68%;
 
-    --border: 222 20% 16%;
-    --input: 222 20% 14%;
+    --border: 226 40% 15%;
+    --input: 226 40% 13%;
     --ring: 38 65% 58%;
 
     --gradient-primary: linear-gradient(135deg, hsl(222 50% 4%) 0%, hsl(222 35% 12%) 100%);
@@ -182,7 +182,7 @@
     overflow-x: clip;
   }
   /* Fallback color (matches AmbientStage) — avoids any flash before paint. */
-  html { background: hsl(222 50% 4%); }
+  html { background: #F7F6F3; }
 
   /* Anchor scroll offset for fixed nav + perf hints for off-screen sections */
   section[id] {
@@ -346,10 +346,26 @@
     border-color: hsl(var(--gold) / 0.45);
   }
 
+  /* Clean poster-style card: white, hairline border, darkens and lifts on hover */
+  .card-clean {
+    @apply relative rounded-2xl border bg-white/90;
+    border-color: #E7E7EA;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+    transition:
+      transform 0.4s var(--ease-expo),
+      box-shadow 0.4s var(--ease-expo),
+      border-color 0.4s var(--ease-expo);
+  }
+  .card-clean:hover {
+    transform: translate3d(0, -4px, 0);
+    border-color: #141414;
+    box-shadow: 0 22px 44px -24px rgba(0, 0, 0, 0.3);
+  }
+
   /* Glass card (used over dark hero) */
   .card-glass {
-    @apply rounded-2xl border border-white/15 backdrop-blur-xl;
-    background: linear-gradient(135deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.03) 100%);
+    @apply rounded-2xl border border-primary/10 backdrop-blur-xl;
+    background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 100%);
     box-shadow:
       inset 0 1px 0 0 rgba(255,255,255,0.18),
       0 12px 32px -8px rgba(0,0,0,0.35);
