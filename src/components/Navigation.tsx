@@ -80,13 +80,13 @@ const Navigation = () => {
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       aria-hidden={!scrolled}
       className={[
-        'fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-6 sm:pt-5',
+        'fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-5 sm:pt-4',
         scrolled ? '' : 'pointer-events-none',
       ].join(' ')}
     >
       <div
         className={[
-          'mx-auto flex max-w-7xl items-center justify-between gap-4 rounded-full border py-2.5 pl-3 pr-2.5 backdrop-blur-xl transition-[background-color,box-shadow,border-color] duration-500 sm:py-3.5 sm:pl-6 sm:pr-3.5',
+          'mx-auto flex max-w-6xl items-center justify-between gap-4 rounded-full border py-2 pl-3 pr-2 backdrop-blur-xl transition-[background-color,box-shadow,border-color] duration-500 sm:pl-4',
           'border-white/70 bg-white/80 shadow-[0_14px_40px_-18px_rgba(20,20,20,0.35)]',
         ].join(' ')}
       >
@@ -96,14 +96,14 @@ const Navigation = () => {
           onClick={(e) => { e.preventDefault(); handleMenuClick('#home'); }}
           className="flex shrink-0 items-center gap-2.5"
         >
-          <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-gradient-gold shadow-sm ring-1 ring-white/60 sm:h-12 sm:w-12">
-            <img src={logo} alt="" className="h-7 w-7 rounded-full sm:h-8 sm:w-8" />
+          <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-gradient-gold shadow-sm ring-1 ring-white/60">
+            <img src={logo} alt="" className="h-6 w-6 rounded-full" />
           </span>
-          <span className="font-anton text-xl uppercase tracking-wide text-[#141414] sm:text-2xl">Prashanth</span>
+          <span className="font-anton text-lg uppercase tracking-wide text-[#141414]">Prashanth</span>
         </a>
 
         {/* Links */}
-        <div className="hidden items-center gap-0.5 xl:flex">
+        <div className="hidden items-center gap-0.5 lg:flex">
           {menuItems.map((item) => {
             const isActive = activeId === item.href.slice(1);
             return (
@@ -113,7 +113,7 @@ const Navigation = () => {
                 aria-current={isActive ? 'true' : undefined}
                 onClick={(e) => { e.preventDefault(); handleMenuClick(item.href); }}
                 className={[
-                  'rounded-full px-4 py-2.5 text-[15px] font-medium transition-colors duration-300',
+                  'rounded-full px-3 py-2 text-sm font-medium transition-colors duration-300',
                   isActive ? 'bg-[#141414] text-white' : 'text-foreground/65 hover:text-foreground',
                 ].join(' ')}
               >
@@ -128,26 +128,26 @@ const Navigation = () => {
           <a
             href="#contact"
             onClick={(e) => { e.preventDefault(); handleMenuClick('#contact'); }}
-            className="group hidden items-center gap-2 rounded-full bg-[#141414] px-7 py-3.5 text-[15px] font-semibold text-white shadow-[0_10px_24px_-12px_rgba(20,20,20,0.7)] transition-transform duration-300 hover:-translate-y-0.5 sm:inline-flex"
+            className="group hidden items-center gap-2 rounded-full bg-[#141414] px-5 py-2.5 text-sm font-semibold text-white shadow-[0_10px_24px_-12px_rgba(20,20,20,0.7)] transition-transform duration-300 hover:-translate-y-0.5 sm:inline-flex"
           >
             Let's Talk
             <ArrowRight className="h-4 w-4 text-secondary transition-transform duration-300 group-hover:translate-x-0.5" />
           </a>
 
-          {/* Menu toggle (below xl) */}
+          {/* Menu toggle (below lg) */}
           <button
             type="button"
             onClick={() => setIsMenuOpen((v) => !v)}
             aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={isMenuOpen}
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-foreground/10 bg-white/70 text-foreground transition-colors hover:bg-white xl:hidden"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-foreground/10 bg-white/70 text-foreground transition-colors hover:bg-white lg:hidden"
           >
             {isMenuOpen ? <X size={18} /> : <Menu size={18} />}
           </button>
         </div>
       </div>
 
-      {/* Menu panel (below xl) */}
+      {/* Menu panel (below lg) */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
@@ -155,7 +155,7 @@ const Navigation = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="mx-auto mt-2 max-w-7xl rounded-3xl border border-white/70 bg-white/90 p-2 shadow-[0_20px_50px_-24px_rgba(20,20,20,0.4)] backdrop-blur-xl xl:hidden"
+            className="mx-auto mt-2 max-w-6xl rounded-3xl border border-white/70 bg-white/90 p-2 shadow-[0_20px_50px_-24px_rgba(20,20,20,0.4)] backdrop-blur-xl lg:hidden"
           >
             <div className="grid gap-1 sm:grid-cols-2">
               {menuItems.map((item) => {

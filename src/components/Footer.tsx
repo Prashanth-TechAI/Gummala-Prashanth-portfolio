@@ -55,9 +55,9 @@ const Footer = () => {
             transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
             whileHover={{ y: -2, scale: 1.06 }}
             whileTap={{ scale: 0.95 }}
-            className="fixed right-6 bottom-[6.25rem] z-[1000] inline-flex h-12 w-12 items-center justify-center rounded-full bg-gradient-gold text-primary shadow-emboss-lg ring-1 ring-white/40 hover:shadow-gold-glow"
+            className="fixed right-5 bottom-[4.75rem] z-[1000] inline-flex h-[46px] w-[46px] items-center justify-center rounded-full bg-gradient-gold text-primary shadow-emboss-lg ring-1 ring-white/40 hover:shadow-gold-glow"
           >
-            <ArrowUp className="h-5 w-5" strokeWidth={2.2} />
+            <ArrowUp className="h-4 w-4" strokeWidth={2.2} />
           </motion.button>
         )}
       </AnimatePresence>

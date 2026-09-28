@@ -496,8 +496,8 @@
 /* WhatsApp floating button */
 .whatsapp-chatbot {
   position: fixed;
-  bottom: 24px; right: 24px;
-  width: 56px; height: 56px;
+  bottom: 20px; right: 20px;
+  width: 46px; height: 46px;
   background: linear-gradient(135deg, #25D366, #128C7E);
   border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
@@ -514,4 +514,4 @@
     inset 0 1px 0 rgba(255,255,255,0.3),
     0 12px 40px rgba(37, 211, 102, 0.55);
 }
-.whatsapp-chatbot svg { width: 28px; height: 28px; color: #fff; }
+.whatsapp-chatbot svg { width: 22px; height: 22px; color: #fff; }

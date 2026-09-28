@@ -45,7 +45,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative isolate overflow-hidden lg:h-[100svh] lg:min-h-[680px]"
+      className="relative isolate overflow-hidden desk:h-[100svh] desk:min-h-[540px]"
     >
       {/* Soft grainy glows at the edges, as on the poster */}
       <div aria-hidden className="noise-overlay pointer-events-none absolute inset-0 -z-10">
@@ -59,14 +59,14 @@ const Hero = () => {
         />
       </div>
 
-      <div className="relative mx-auto flex max-w-[1600px] flex-col items-center px-5 pb-14 pt-24 lg:block lg:h-full lg:p-0">
+      <div className="relative mx-auto flex max-w-[1600px] flex-col items-center px-5 pb-14 pt-24 desk:block desk:h-full desk:p-0">
         {/* Giant name, behind the portrait */}
-        <div className="relative z-10 lg:absolute lg:left-1/2 lg:top-[14%] lg:-translate-x-1/2">
+        <div className="relative z-10 desk:absolute desk:left-1/2 desk:top-[12%] desk:-translate-x-1/2">
           <motion.h1
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: EASE }}
-            className="whitespace-nowrap font-anton uppercase leading-[0.82] text-[#141414] text-[19vw] lg:text-[clamp(6rem,16.5vw,19rem)]"
+            className="whitespace-nowrap font-anton uppercase leading-[0.82] text-[#141414] text-[min(19vw,13rem)] desk:text-[clamp(5rem,min(16.5vw,30svh),19rem)]"
           >
             <span className="sr-only">Gummala </span>
             Prashanth
@@ -74,7 +74,7 @@ const Hero = () => {
         </div>
 
         {/* Cut-out portrait, in front of the name */}
-        <div className="relative z-20 -mt-[3vw] h-[62svh] max-h-[540px] lg:absolute lg:bottom-0 lg:left-[16%] lg:mt-0 lg:h-[86%] lg:max-h-none">
+        <div className="relative z-20 -mt-[3vw] h-[62svh] max-h-[540px] desk:absolute desk:bottom-0 desk:left-[5%] desk:mt-0 desk:xl:left-[12%] desk:2xl:left-[16%] desk:h-[86%] desk:max-h-none">
           <motion.img
             src={cutout}
             alt="Gummala Prashanth"
@@ -90,13 +90,13 @@ const Hero = () => {
         </div>
 
         {/* Brush-script role, overlapping name and portrait */}
-        <div className="relative z-30 -mt-[18vw] lg:absolute lg:right-[5%] lg:top-[31%] lg:mt-0">
+        <div className="relative z-30 -mt-[min(18vw,9rem)] desk:absolute desk:right-[5%] desk:top-[29%] desk:mt-0">
           <motion.p
             // The clip box reaches well past the text so descenders like the "g" are never cut.
             initial={{ clipPath: 'inset(-40% 100% -60% -10%)' }}
             animate={{ clipPath: 'inset(-40% -10% -60% -10%)' }}
             transition={{ duration: 1.2, delay: 0.55, ease: EASE }}
-            className="-rotate-[4deg] whitespace-nowrap pb-4 pr-6 font-script leading-none text-secondary text-[17vw] lg:text-[clamp(4.5rem,10.5vw,11.5rem)]"
+            className="-rotate-[4deg] whitespace-nowrap pb-4 pr-6 font-script leading-none text-secondary text-[min(17vw,8rem)] desk:text-[clamp(3.5rem,min(10.5vw,17svh),11.5rem)]"
             style={{ textShadow: '6px 8px 10px rgba(0,0,0,0.22)' }}
           >
             AI Engineer
@@ -108,7 +108,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.9, ease: EASE }}
-          className="relative z-30 mt-2 flex max-w-[34rem] flex-col items-center text-center lg:absolute lg:right-[6%] lg:top-[57%] lg:mt-0 lg:items-end lg:text-right"
+          className="relative z-30 mt-4 flex max-w-[34rem] flex-col items-center text-center desk:absolute desk:bottom-[6%] desk:right-[6%] desk:mt-0 desk:max-w-[32rem] desk:items-end desk:text-right desk:xl:max-w-[35rem]"
         >
           {/* Status pill */}
           <span className="inline-flex items-center gap-2 rounded-full border border-foreground/10 bg-white/80 px-3.5 py-1.5 text-xs font-medium text-foreground/80 shadow-sm backdrop-blur">
@@ -121,16 +121,16 @@ const Hero = () => {
             Bangalore, India
           </span>
 
-          <p className="mt-5 text-xl font-medium leading-snug text-foreground sm:text-2xl">
+          <p className="mt-5 text-xl font-medium leading-snug text-foreground sm:text-2xl short:mt-3 short:text-lg">
             Generative AI engineer crafting intelligent systems with LLMs, voice agents and computer vision.
           </p>
 
           {/* Stats, set in the same condensed face as the name */}
-          <dl className="mt-6 flex items-stretch divide-x divide-foreground/15">
+          <dl className="mt-6 flex items-stretch divide-x divide-foreground/15 short:mt-4">
             {stats.map((st) => (
-              <div key={st.label} className="px-5 first:pl-0 last:pr-0 lg:text-right">
+              <div key={st.label} className="px-5 first:pl-0 last:pr-0 desk:text-right">
                 <dt className="sr-only">{st.label}</dt>
-                <dd className="font-anton text-4xl leading-none text-[#141414] sm:text-5xl">{st.value}</dd>
+                <dd className="font-anton text-4xl leading-none text-[#141414] sm:text-5xl short:text-4xl">{st.value}</dd>
                 <dd className="mt-1.5 text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
                   {st.label}
                 </dd>
@@ -138,7 +138,7 @@ const Hero = () => {
             ))}
           </dl>
 
-          <div className="relative mt-8 flex flex-wrap items-center justify-center gap-3 lg:justify-end">
+          <div className="relative mt-8 flex flex-wrap items-center justify-center gap-3 desk:justify-end short:mt-5">
             <button
               type="button"
               onClick={() => setShowOptions((v) => !v)}
@@ -156,7 +156,7 @@ const Hero = () => {
               Explore Work
               <ArrowDown className="h-4 w-4" />
             </a>
-            <div className="flex items-center gap-1.5 sm:ml-2">
+            <div className="flex items-center gap-1.5 sm:ml-1">
               {socials.map((so) => (
                 <a
                   key={so.label}
@@ -178,7 +178,7 @@ const Hero = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -6 }}
                   transition={{ duration: 0.2, ease: EASE }}
-                  className="absolute -bottom-14 left-1/2 z-40 flex -translate-x-1/2 gap-2 lg:left-auto lg:right-0 lg:translate-x-0"
+                  className="absolute -bottom-14 left-1/2 z-40 flex -translate-x-1/2 gap-2 desk:bottom-full desk:left-auto desk:right-0 desk:mb-3 desk:translate-x-0"
                 >
                   <Button size="sm" onClick={handleRecruiterClick} className="btn-primary h-auto whitespace-nowrap px-4 py-2 text-xs">
                     <Briefcase className="mr-1.5 h-3.5 w-3.5" />

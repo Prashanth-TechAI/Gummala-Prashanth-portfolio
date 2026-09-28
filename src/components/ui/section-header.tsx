@@ -15,15 +15,15 @@ type SectionHeaderProps = {
  * one-line summary set beside it.
  */
 export const SectionHeader = ({ word, script, title, subtitle }: SectionHeaderProps) => (
-  <header className="mb-14 grid items-end gap-8 md:mb-20 lg:grid-cols-12">
+  <header className="mb-14 grid items-end gap-8 md:mb-20 lg:grid-cols-12 short:mb-12">
     <Reveal y={24} className="lg:col-span-7">
       <h2 className="relative inline-block pr-10 pb-6">
-        <span className="block font-anton uppercase leading-[0.85] text-[#141414] text-[clamp(3.5rem,11vw,8.5rem)]">
+        <span className="block font-anton uppercase leading-[0.85] text-[#141414] text-[clamp(3.5rem,11vw,8.5rem)] short:text-[clamp(3.5rem,8vw,6rem)]">
           {word}
         </span>
         <span
           aria-hidden
-          className="absolute -bottom-1 right-0 -rotate-[4deg] whitespace-nowrap font-script leading-none text-secondary text-[clamp(2rem,4.8vw,4.25rem)]"
+          className="absolute -bottom-1 right-0 -rotate-[4deg] whitespace-nowrap font-script leading-none text-secondary text-[clamp(2rem,4.8vw,4.25rem)] short:text-[clamp(2rem,3.6vw,3.25rem)]"
           style={{ textShadow: '4px 6px 8px rgba(0,0,0,0.18)' }}
         >
           {script}

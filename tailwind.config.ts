@@ -17,6 +17,11 @@ export default {
 			screens: { '2xl': '1600px' }
 		},
 		extend: {
+			screens: {
+				// Hero side-by-side layout: desktop width AND a landscape screen (upright tablets stack instead)
+				desk: { raw: '(min-width: 1024px) and (min-aspect-ratio: 6/5)' },
+				short: { raw: '(min-width: 1024px) and (min-aspect-ratio: 6/5) and (max-height: 820px)' },
+			},
 			fontFamily: {
 				inter: ['Inter', 'sans-serif'],
 				playfair: ['"Playfair Display"', 'serif'],
