@@ -1,4 +1,5 @@
-import { ArrowUpRight } from 'lucide-react';
+import { useState } from 'react';
+import { ArrowUpRight, ChevronDown } from 'lucide-react';
 import wednesShot from '@/assets/wednes-ai-screenshot.webp';
 import { SectionHeader } from '@/components/ui/section-header';
 import { Reveal } from '@/components/ui/reveal';
@@ -11,6 +12,20 @@ const projects = [
     link: 'https://wednes-ai.vercel.app/',
     tags: ['No-Code', 'AI Agents', 'RAG', 'Platform'],
     featured: true,
+  },
+  {
+    title: 'PanelMind AI',
+    description:
+      'UPSC interview simulator: five LiveKit voice agents question the candidate aloud from their DAF, turn-taking enforced by a state machine (291 ms median turn), then five independent evaluators mark all seven official traits out of 275.',
+    link: 'https://github.com/Prashanth-TechAI/Panel-Mind.ai',
+    tags: ['Voice Agents', 'LiveKit', 'FastAPI', 'Next.js', 'PostgreSQL'],
+  },
+  {
+    title: 'AI Newsdeck',
+    description:
+      'AI news-monitoring dashboard. A LangGraph agent plans each keyword search, checks results are on-topic, then Claude summarises, scores and ranks every article, refreshed hourly.',
+    link: 'https://github.com/Prashanth-TechAI/AI-Newsdeck',
+    tags: ['LangGraph', 'FastAPI', 'Claude', 'PostgreSQL', 'React'],
   },
   {
     title: 'Get JustDial',
@@ -28,20 +43,15 @@ const projects = [
   },
   {
     title: 'AI Chatbot with Groq',
+    minor: true,
     description:
       'A ChatGPT-like AI chatbot built with Flask and the Groq API, featuring real-time streaming responses and persistent conversation history.',
     link: 'https://github.com/Prashanth-TechAI/-AI-Chatbot-with-Groq-API',
     tags: ['Flask', 'Groq API', 'NLP', 'Real-time'],
   },
   {
-    title: 'Intrusion Detection System',
-    description:
-      'Random-Forest classifier that monitors network traffic and flags anomalous, potentially malicious requests to a client website.',
-    link: 'https://github.com/Prashanth-TechAI/INTRUSION-DETECTION-SYSTEM',
-    tags: ['Machine Learning', 'Random Forest', 'Security', 'Python'],
-  },
-  {
     title: 'Face Recognition System',
+    minor: true,
     description:
       'Real-time face recognition with OpenCV, dlib, and face_recognition, backed by SQLite for secure user identification.',
     link: 'https://github.com/Prashanth-TechAI/Face-Recogntion-System',
@@ -55,7 +65,16 @@ const projects = [
     tags: ['Deep Learning', 'API', 'Media', 'Authentication'],
   },
   {
+    title: 'Intrusion Detection System',
+    minor: true,
+    description:
+      'Random-Forest classifier that monitors network traffic and flags anomalous, potentially malicious requests to a client website.',
+    link: 'https://github.com/Prashanth-TechAI/INTRUSION-DETECTION-SYSTEM',
+    tags: ['Machine Learning', 'Random Forest', 'Security', 'Python'],
+  },
+  {
     title: 'Jenni AI — Assistant',
+    minor: true,
     description:
       'An intelligent voice assistant that handles natural-language commands for web search, music, note-taking, and more.',
     link: 'https://github.com/Prashanth-TechAI/Jenni.AI',
@@ -72,8 +91,16 @@ const projects = [
 
 const featured = projects.find((p) => p.featured)!;
 const others = projects.filter((p) => !p.featured);
+const hiddenCount = others.filter((p) => p.minor).length;
 
-const Projects = () => (
+const Projects = () => {
+  const [showAll, setShowAll] = useState(false);
+  // Hidden projects are appended after the main list, never interleaved with it.
+  const visible = showAll
+    ? [...others.filter((p) => !p.minor), ...others.filter((p) => p.minor)]
+    : others.filter((p) => !p.minor);
+
+  return (
   <section id="projects" className="relative py-20 sm:py-24 lg:py-28">
     <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
       <SectionHeader
@@ -138,7 +165,7 @@ const Projects = () => (
 
       {/* The rest: large editorial rows; each row turns black on hover */}
       <ul className="mt-10 border-t border-[#141414]/15">
-        {others.map((project) => (
+        {visible.map((project) => (
           <li key={project.title} className="border-b border-[#141414]/15">
             <a
               href={project.link}
@@ -162,8 +189,22 @@ const Projects = () => (
           </li>
         ))}
       </ul>
+
+      {/* Smaller projects stay tucked away until asked for */}
+      <div className="mt-8 flex justify-center">
+        <button
+          type="button"
+          onClick={() => setShowAll((v) => !v)}
+          aria-expanded={showAll}
+          className="inline-flex items-center gap-2 rounded-full border border-[#141414]/20 bg-white/70 px-6 py-3 text-sm font-semibold text-foreground transition-colors hover:border-[#141414]/50 hover:bg-white"
+        >
+          {showAll ? 'Show fewer projects' : `Show ${hiddenCount} more projects`}
+          <ChevronDown className={['h-4 w-4 transition-transform duration-300', showAll ? 'rotate-180' : ''].join(' ')} />
+        </button>
+      </div>
     </div>
   </section>
-);
+  );
+};
 
 export default Projects;
