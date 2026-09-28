@@ -150,7 +150,7 @@ const Projects = () => {
                 </div>
                 <img
                   src={wednesShot}
-                  alt="WEDNES AI home page: Build AI Agents with SQL Agents"
+                  alt="WEDNES AI home page: Build production agents without writing code"
                   width={1440}
                   height={720}
                   loading="lazy"
